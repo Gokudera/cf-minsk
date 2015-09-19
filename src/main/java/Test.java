@@ -2,18 +2,17 @@
  * Created by alistem on 19.9.15.
  */
 
-import java.io.IOException;
-import java.util.List;
-
 import com.xeiam.xchange.Exchange;
 import com.xeiam.xchange.ExchangeFactory;
-
 import com.xeiam.xchange.anx.v2.ANXExchange;
 import com.xeiam.xchange.bitbay.BitbayExchange;
+import com.xeiam.xchange.bitcoinaverage.BitcoinAverageExchange;
 import com.xeiam.xchange.currency.CurrencyPair;
 import com.xeiam.xchange.dto.marketdata.Ticker;
 import com.xeiam.xchange.service.polling.marketdata.PollingMarketDataService;
-//import com.xeiam.xchange
+
+import java.io.IOException;
+import java.util.List;
 public class Test {
 
     public static void main(String[] args) throws IOException {
@@ -31,7 +30,7 @@ public class Test {
 
         Exchange anx = ExchangeFactory.INSTANCE.createExchange(name);
         PollingMarketDataService marketDataService = anx.getPollingMarketDataService();
-        marketDataService.
+//        anx.remoteInit();
         List<CurrencyPair> pairList = marketDataService.getExchangeSymbols();
         for(CurrencyPair pair : pairList){
             System.out.println(marketDataService.getTicker(pair));
